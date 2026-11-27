@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#e8edf1"/>
+  <circle cx="125" cy="100" r="54" fill="#d7e2e8"/>
+  <path d="M0 326h640v94H0z" fill="#d8cbb9"/>
+  <rect x="222" y="64" width="196" height="276" rx="22" fill="#f8f8f4" stroke="#d4d7d4" stroke-width="5"/>
+  <path d="M226 196h188" stroke="#d4d7d4" stroke-width="5"/>
+  <rect x="389" y="112" width="8" height="48" rx="4" fill="#8ca1a5"/>
+  <rect x="389" y="217" width="8" height="79" rx="4" fill="#8ca1a5"/>
+  <rect x="243" y="82" width="150" height="99" rx="10" fill="#e9f2ef"/>
+  <circle cx="286" cy="126" r="24" fill="#fff" stroke="#d6e1dd" stroke-width="4"/>
+  <path d="M286 126l11-12" stroke="#e8a65a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="286" cy="126" r="4" fill="#56756e"/>
+  <path d="M236 341v13m168-13v13" stroke="#9eaaa5" stroke-width="8" stroke-linecap="round"/>
+  <text x="320" y="390" text-anchor="middle" fill="#4a6259" font-family="Arial,sans-serif" font-size="18" font-weight="600">Cool finds, close by</text>
+</svg>

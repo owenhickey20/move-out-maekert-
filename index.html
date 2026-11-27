@@ -3,22 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YourStartup</title>
+  <title>Move Out Market</title>
   <meta name="description" content="A student startup prototype for BSAD 281.">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261126-explore-filter">
 </head>
 <body>
 
   <!-- =========================================================
        HEADER: logo text + navigation.
-       Each link points to a "view" further down the page (#home, #explore, #about).
+       Each link points to a view further down the page.
        ========================================================= -->
   <header class="site-header">
-    <a class="brand" href="#home" id="brand-name">YourStartup</a>
+    <div class="header-left">
+      <button class="account-button" id="account-button" type="button">Create account / Sign up</button>
+      <a class="brand" href="#home" id="brand-name">Move Out Market</a>
+    </div>
     <nav aria-label="Main">
       <a href="#home">Home</a>
       <a href="#explore">Explore</a>
-      <a href="#about">About</a>
+      <a href="#sell">Sell</a>
+      <a href="#messages">Messages</a>
     </nav>
   </header>
 
@@ -29,27 +33,39 @@
          ======================================================= -->
     <section id="home" data-view>
       <div class="hero">
-        <p class="eyebrow">Prototype</p>
-        <h1 id="tagline">One sentence that says what your startup does.</h1>
-        <p class="lead" id="pitch">
-          Who is your customer, what problem do they have, and why is your
-          solution better than what they use today?
-        </p>
-        <a class="button" href="#explore">See it in action</a>
+        <p class="eyebrow">Move-out marketplace</p>
+        <h1 id="tagline">Move Out Market</h1>
+        <p class="lead" id="pitch">Buy and sell used furniture and dorm essentials during move-out.</p>
+        <div class="hero-actions">
+          <a class="button" href="#explore">Browse listings</a>
+          <a class="button secondary" href="#sell">Sell an item</a>
+        </div>
       </div>
 
       <div class="steps">
-        <div class="card">
-          <h2>1. Step one</h2>
-          <p>Describe the first thing a customer does.</p>
+        <div class="card home-item">
+          <img class="item-photo" src="assets/desk.svg" alt="Illustration of a study desk" loading="lazy">
+          <div class="home-item-details">
+            <span class="tag">Furniture</span>
+            <h2>Desk</h2>
+            <p class="listing-price">$25</p>
+          </div>
         </div>
-        <div class="card">
-          <h2>2. Step two</h2>
-          <p>Describe what happens next.</p>
+        <div class="card home-item">
+          <img class="item-photo" src="assets/mini-fridge.svg" alt="Illustration of a mini fridge" loading="lazy">
+          <div class="home-item-details">
+            <span class="tag">Dorm essentials</span>
+            <h2>Mini Fridge</h2>
+            <p class="listing-price">$45</p>
+          </div>
         </div>
-        <div class="card">
-          <h2>3. Step three</h2>
-          <p>Describe the result the customer gets.</p>
+        <div class="card home-item">
+          <img class="item-photo" src="assets/lamp.svg" alt="Illustration of a desk lamp" loading="lazy">
+          <div class="home-item-details">
+            <span class="tag">Dorm essentials</span>
+            <h2>Lamp</h2>
+            <p class="listing-price">$10</p>
+          </div>
         </div>
       </div>
     </section>
@@ -58,13 +74,37 @@
          VIEW 2: EXPLORE — a list built from the fake data in data.js.
          ======================================================= -->
     <section id="explore" data-view hidden>
-      <h1>Explore</h1>
-      <p class="muted">These examples are fake. They come from <code>data.js</code>.</p>
+      <h1>Explore listings</h1>
+      <p class="muted">Find what you need before move-out day.</p>
 
-      <label class="search">
-        <span>Search</span>
-        <input type="search" id="search-box" placeholder="Type to filter…">
-      </label>
+      <div class="explore-controls">
+        <label class="search">
+          <span>Search</span>
+          <input type="search" id="search-box" placeholder="Search furniture or dorm essentials…">
+        </label>
+        <div class="filter-control">
+          <button class="filter-button" id="filter-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="filter-panel">
+            Filters <span id="active-filter-count" hidden>0</span>
+          </button>
+          <div class="filter-panel" id="filter-panel" hidden>
+            <label class="category-filter">
+              <span>Category</span>
+              <select id="category-filter"></select>
+            </label>
+            <label class="price-filter">
+              <span>Price range</span>
+              <select id="price-filter">
+                <option value="All">All prices</option>
+                <option value="under-15">Under $15</option>
+                <option value="15-30">$15 to $30</option>
+                <option value="30-50">$30 to $50</option>
+                <option value="over-50">Over $50</option>
+              </select>
+            </label>
+            <button class="clear-filter-button" id="clear-filters" type="button">Clear filters</button>
+          </div>
+        </div>
+      </div>
 
       <p class="muted" id="saved-count"></p>
       <div class="grid" id="listing-grid"></div>
@@ -72,15 +112,142 @@
     </section>
 
     <!-- =======================================================
-         VIEW 3: ABOUT — your team and your story.
+         VIEW 3: MESSAGES — conversations for marketplace listings.
          ======================================================= -->
-    <section id="about" data-view hidden>
-      <h1>About us</h1>
-      <p>Tell the story of why your team started this company.</p>
-      <p>Use first names only, or no names at all — this site is public.</p>
+    <section id="messages" data-view hidden>
+      <div class="messages-heading">
+        <div>
+          <p class="eyebrow">Talk it through</p>
+          <h1>Your messages</h1>
+          <p class="muted">Ask a seller about an item or arrange a pickup.</p>
+        </div>
+        <p class="prototype-note">Prototype messages are saved only in this browser.</p>
+      </div>
+      <div class="messages-layout">
+        <aside class="conversation-list" aria-label="Conversations">
+          <h2>Conversations</h2>
+          <div id="conversation-list"></div>
+          <p class="muted" id="no-conversations">Message a seller from any listing to start a conversation.</p>
+        </aside>
+        <section class="conversation-panel" aria-label="Selected conversation">
+          <div class="conversation-header" id="conversation-header">
+            <h2>Select a conversation</h2>
+          </div>
+          <div class="message-list" id="message-list" aria-live="polite"></div>
+          <form id="message-form" class="message-form" hidden>
+            <label>
+              Your first name
+              <input type="text" name="sender" maxlength="40" placeholder="First name" required>
+            </label>
+            <label>
+              Message
+              <textarea name="body" rows="2" maxlength="500" placeholder="Ask a question or arrange pickup…" required></textarea>
+            </label>
+            <button type="submit" class="button">Send message</button>
+            <p class="form-status" id="message-status" role="status"></p>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         VIEW 4: SELL — let a student post an item.
+         ======================================================= -->
+    <section id="sell" data-view hidden>
+      <div class="sell-layout">
+        <div>
+          <p class="eyebrow">Sell on Move Out Market</p>
+          <h1>List an item</h1>
+          <p class="muted">Set a move-out deadline so buyers know when the item must be picked up.</p>
+        </div>
+
+        <form id="sell-form" class="sell-form">
+          <label>
+            Item name
+            <input type="text" name="name" placeholder="Example: Desk" required>
+          </label>
+          <label>
+            Seller name
+            <input type="text" name="seller" maxlength="40" placeholder="First name" required>
+          </label>
+          <div class="form-row">
+            <label>
+              Category
+              <select name="category" required>
+                <option value="">Choose category</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Dorm essentials">Dorm essentials</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Books">Books</option>
+                <option value="Kitchen">Kitchen</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <label>
+              Price ($)
+              <input type="number" name="price" min="1" step="0.01" placeholder="25.00" required>
+            </label>
+          </div>
+          <label>
+            Move-out deadline
+            <input type="date" name="deadline" required>
+          </label>
+          <fieldset class="condition-rating">
+            <legend>Item condition <span class="required-mark">Required</span></legend>
+            <div class="star-options" role="radiogroup" aria-label="Item condition out of 5 stars">
+              <label><input type="radio" name="condition" value="1" required><span aria-hidden="true">★</span><span class="star-label">1 star</span></label>
+              <label><input type="radio" name="condition" value="2"><span aria-hidden="true">★ ★</span><span class="star-label">2 stars</span></label>
+              <label><input type="radio" name="condition" value="3"><span aria-hidden="true">★ ★ ★</span><span class="star-label">3 stars</span></label>
+              <label><input type="radio" name="condition" value="4"><span aria-hidden="true">★ ★ ★ ★</span><span class="star-label">4 stars</span></label>
+              <label><input type="radio" name="condition" value="5"><span aria-hidden="true">★ ★ ★ ★ ★</span><span class="star-label">5 stars</span></label>
+            </div>
+          </fieldset>
+          <label class="photo-upload">
+            Item photo <span class="required-mark">Required</span>
+            <input id="photo-input" type="file" name="photo" accept="image/*" required>
+            <span class="upload-hint">Choose a clear photo of the item (image files only).</span>
+            <img id="photo-preview" class="photo-preview" alt="Preview of the selected item photo" hidden>
+          </label>
+          <label>
+            Description
+            <textarea name="description" rows="4" placeholder="Describe the item's condition and pickup details." required></textarea>
+          </label>
+          <p class="fee-note" id="fee-note">Move Out Market collects a 5% fee after a sale.</p>
+          <button class="button" type="submit">Post listing</button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+      </div>
     </section>
 
   </main>
+
+  <dialog class="account-dialog" id="account-dialog" aria-labelledby="account-title">
+    <form class="account-form" id="account-form">
+      <div class="account-heading">
+        <div>
+          <p class="eyebrow">Join the marketplace</p>
+          <h2 id="account-title">Create an account</h2>
+        </div>
+        <button class="dialog-close" id="dialog-close" type="button" aria-label="Close sign-up form">×</button>
+      </div>
+      <label>
+        Full name
+        <input type="text" name="name" maxlength="60" autocomplete="name" placeholder="Your name" required>
+      </label>
+      <label>
+        Email address
+        <input type="email" name="email" maxlength="120" autocomplete="email" placeholder="you@example.com" required>
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" minlength="8" autocomplete="new-password" placeholder="At least 8 characters" required>
+      </label>
+      <button class="button" type="submit">Create account</button>
+      <p class="form-status" id="account-status" role="status"></p>
+      <p class="account-note">Prototype only: account details are stored in this browser and are not sent to a server.</p>
+    </form>
+  </dialog>
 
   <!-- Keep this footer. Your site must say it is a student project. -->
   <footer class="site-footer">
@@ -88,7 +255,7 @@
   </footer>
 
   <!-- Scripts load in this order: data first, then the code that uses it. -->
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="data.js?v=20261126-explore-filter"></script>
+  <script src="app.js?v=20261126-explore-filter"></script>
 </body>
 </html>

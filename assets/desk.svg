@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#e8eee8"/>
+  <circle cx="520" cy="85" r="52" fill="#d4e0d4"/>
+  <path d="M0 315h640v105H0z" fill="#d9c9b3"/>
+  <path d="M0 325h640" stroke="#c6b59e" stroke-width="8"/>
+  <rect x="134" y="185" width="370" height="26" rx="8" fill="#9b6745"/>
+  <path d="M158 211h22v118h-22zm300 0h22v118h-22z" fill="#815437"/>
+  <rect x="244" y="108" width="143" height="76" rx="8" fill="#344c4b"/>
+  <rect x="252" y="116" width="127" height="58" rx="4" fill="#c6ddd4"/>
+  <path d="M307 184h17v18h-17z" fill="#344c4b"/>
+  <rect x="280" y="200" width="72" height="7" rx="3" fill="#344c4b"/>
+  <rect x="376" y="147" width="54" height="36" rx="4" fill="#e4b85c"/>
+  <path d="M385 147v-15h36v15" fill="#f3d48f"/>
+  <rect x="129" y="168" width="66" height="17" rx="5" fill="#d08b5b"/>
+  <path d="M129 168l21-22 22 22" fill="#e2aa79"/>
+  <text x="320" y="382" text-anchor="middle" fill="#4a6259" font-family="Arial,sans-serif" font-size="18" font-weight="600">A little more room to study</text>
+</svg>
